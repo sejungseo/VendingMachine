@@ -141,18 +141,31 @@ main {
 
 .btn-book img,
 .book-name,
-.book-price {
+.book-price,
+.writer-name {
   display: block;
 }
 
 .btn-book img {
   width: 90px;
+  height: 133px;
   margin: 0 auto;
 }
 
-.book-name {
+.book-name,
+.writer-name {
   margin: 6px 0;
   font-size: 13px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 112px;
+}
+
+.writer-name {
+  color: #7d7c7c;
+  font-size: 11px;
 }
 
 .book-price {
@@ -166,6 +179,60 @@ main {
 /* 선택한 버튼 */
 .btn-book:active {
   box-shadow: 0 0 0 4px #1A5D1A;
+}
+
+/* 품절 버튼 */
+.btn-book:disabled {
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-book:disabled::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.soldout {
+  color: #EAE8FE;
+  font-size: 16px;
+
+  z-index: 10;
+  border: 4px double #EAE8FE;
+  position: absolute;
+  width: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-20deg);
+}
+
+/* 화살표 */
+.pagination {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.btn-arrow {
+  width: 30px;
+  height: 30px;
+  color: #1A5D1A;
+  font-size: 16px;
+  border-radius: 50%;
+  /* background: none;
+  box-shadow: none; */
+}
+
+.btn-arrow:hover {
+  background-color: #79AC78;
 }
 
 /* 잔액 */
@@ -224,14 +291,18 @@ main {
   gap: 10px;
 }
 
+.get-list li:hover {
+  cursor: pointer;
+}
+
 .get-list li img {
   width: 25px;
 }
 
 .get-list li strong {
-  width: 30px;
+  width: 20px;
   height: 30px;
-  margin-left: auto;
+  /* margin-left: auto; */
   border: 1px solid #BDBDBD;
   border-radius: 5px;
 
@@ -240,11 +311,19 @@ main {
   align-items: center;
 }
 
+.title-count-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .btn-get {
   color: white;
   background-color: #1A5D1A;
 }
 
+.bestseller,
 .section3 h2 {
   text-align: center;
   margin-bottom: 13px;

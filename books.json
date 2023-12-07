@@ -1,0 +1,86 @@
+[
+    {
+        "title": "불편한 편의점",
+        "price": 14000,
+        "img": "book1.jpg",
+        "writer": "김호연",
+        "count": 1
+    },
+    {
+        "title": "역행자",
+        "price": 17500,
+        "img": "book2.jpg",
+        "writer": "자청",
+        "count": 5
+    },    
+    { 
+        "title": "부자 아빠 가난한 아빠",
+        "price": 17000,
+        "img": "book3.jpg",
+        "writer": "로버트 기요사키",
+        "count": 5
+    },    
+    { 
+        "title": "달러구트 꿈 백화점",
+        "price": 16000,
+        "img": "book4.jpg",
+        "writer": "이미예",
+        "count": 5
+    },    
+    { 
+        "title": "웰씽킹",
+        "price": 18000,
+        "img": "book5.jpg",
+        "writer": "김호연",
+        "count": 5
+    },    
+    { 
+        "title": "당신은 결국 무엇이든 해내는 사람",
+        "price": 17000,
+        "img": "book6.jpg",
+        "writer": "김상현",
+        "count": 5
+    },
+    {
+        "title": "마흔에 읽는 쇼펜하우어",
+        "price": 17000,
+        "img": "book7.jpg",
+        "writer": "강용수",
+        "count": 1
+    },
+    {
+        "title": "돈의 속성",
+        "price": 17800,
+        "img": "book8.jpg",
+        "writer": "김승호",
+        "count": 5
+    },    
+    { 
+        "title": "원씽",
+        "price": 14000,
+        "img": "book9.jpg",
+        "writer": "게리 켈러 외",
+        "count": 5
+    },    
+    { 
+        "title": "인간 실격",
+        "price": 9000,
+        "img": "book10.jpg",
+        "writer": "이미예",
+        "count": 5
+    },    
+    { 
+        "title": "세이노의 가르침",
+        "price": 7200,
+        "img": "book11.jpg",
+        "writer": "세이노",
+        "count": 5
+    },    
+    { 
+        "title": "도둑맞은 집중력",
+        "price": 18800,
+        "img": "book12.jpg",
+        "writer": "요한 하리",
+        "count": 5
+    }
+]   
