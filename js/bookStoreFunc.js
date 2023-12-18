@@ -92,50 +92,50 @@ class BookStoreFunc {
      * 만약 책의 data-count 값이 0이라면 button 요소에 disabled 속성이 추가되고, 책 템플릿에 strong 태그 추가
      */
 
-    const bookBtns = this.bookList.querySelectorAll('button');
+    // 페이지네이션에 대해서도 동작하도록 이벤트 위임 사용
+    this.bookList.addEventListener('click', (e) => {
+      const bookBtn = e.target.closest('.btn-book');
+      if(!bookBtn) return;
 
-    bookBtns.forEach((bookBtn) => {
-      bookBtn.addEventListener('click', () => {
-        // 현재 잔액
-        const balanceVal = parseInt(this.balance.textContent.replaceAll(',', ''));
-        // 클릭한 책의 가격
-        const targetElPrice = parseInt(bookBtn.dataset.price);
-        const stagedListItem = this.stagedList.querySelectorAll('li');
-        let isStaged = false;
+      // 현재 잔액
+      const balanceVal = parseInt(this.balance.textContent.replaceAll(',', ''));
+      // 클릭한 책의 가격
+      const targetElPrice = parseInt(bookBtn.dataset.price);
+      const stagedListItem = this.stagedList.querySelectorAll('li');
+      let isStaged = false;
 
-        // 잔액이 선택한 책 가격보다 많거나 같은 경우
-        if(balanceVal >= targetElPrice) {
-          this.balance.textContent = new Intl.NumberFormat().format(balanceVal - targetElPrice) + ' 원';
-          
-          for(const item of stagedListItem) {
-            // 선택한 책이 이미 장바구니에 있는 경우
-            if(item.dataset.item === bookBtn.dataset.item) {
-              const itemTxt = item.querySelector('strong');
-              // 장바구니 책의 카운트 1 증가
-              itemTxt.firstChild.textContent = parseInt(itemTxt.firstChild.textContent) + 1;
-              isStaged = true;
-              break;
-            }
+      // 잔액이 선택한 책 가격보다 많거나 같은 경우
+      if(balanceVal >= targetElPrice) {
+        this.balance.textContent = new Intl.NumberFormat().format(balanceVal - targetElPrice) + '원';
+
+        for(const item of stagedListItem) {
+          // 선택한 책이 이미 장바구니에 있는 경우
+          if(item.dataset.item === bookBtn.dataset.item) {
+            const itemTxt = item.querySelector('strong');
+            // 장바구니 책의 카운트 1 증가
+            itemTxt.firstChild.textContent = parseInt(itemTxt.firstChild.textContent) + 1;
+            isStaged = true;
+            break;
           }
-
-          // 처음 선택한 책이라면 책을 장바구니에 담기
-          if(!isStaged) {
-            this.stagedItemGenerator(bookBtn);
-          }
-
-          bookBtn.dataset.count--;
-
-          // 책의 카운트가 0인 경우
-          if(parseInt(bookBtn.dataset.count) === 0) {
-            // disabled 속성 추가 + strong 품절 태그 추가
-            bookBtn.disabled = true;
-            bookBtn.insertAdjacentHTML('afterbegin', '<strong class="soldout">품절</strong>')
-          }
-        } else {
-          alert('잔액이 부족합니다. 돈을 더 입금해주세요.')
         }
-      });
-    })
+
+        // 처음 선택한 책이라면 책을 장바구니에 담기
+        if(!isStaged) {
+          this.stagedItemGenerator(bookBtn);
+        }
+
+        bookBtn.dataset.count--;
+
+        // 책의 카운트가 0인 경우
+        if(parseInt(bookBtn.dataset.count) === 0) {
+          // disabled 속성 추가 + strong 품절 태그 추가
+          bookBtn.disabled = true;
+          bookBtn.insertAdjacentHTML('afterbegin', '<strong class="soldout">품절</strong>')
+        }
+      } else {
+        alert('잔액이 부족합니다. 돈을 더 입금해주세요.')
+      }
+    });
 
     // 장바구니에 있는 책을 클릭할 때의 이벤트 리스너
     this.stagedList.addEventListener('click', (e) => {
