@@ -7,7 +7,7 @@ class BookStoreFunc {
     this.inputMoneyEl = section1.querySelector('#input-money'); // 입금액 입력
     this.btnDeposit = section1.querySelector('#input-money+.btn'); // 입금 버튼
     this.stagedList = section1.querySelector('.get-list'); // 장바구니 목록
-    this.btnGetBooks = section1.querySelector('.btn-get'); // 획득 버튼
+    this.btnGetBooks = section1.querySelector('.btn-get'); // 구매하기 버튼
     
     const section2 = document.querySelector('.section2');
     this.myMoney = section2.querySelector('.bg-box p'); // 소지금
@@ -17,7 +17,10 @@ class BookStoreFunc {
     this.txtTotal = section3.querySelector('.total-price'); // 총 금액
   }
 
-  // 클래스의 초기 설정 위한 메서드. 이벤트 리스너 바인딩하는 역할
+  // 클래스의 초기 설정 위한 메서드
+  // 이벤트 리스너 바인딩
+  // 코드의 구조화 및 가독성 향상
+  // 유지보수 및 확장 용이성
   setup() {
     this.bindEvents();
   }
@@ -56,16 +59,14 @@ class BookStoreFunc {
       const balanceVal = parseInt(this.balance.textContent.replaceAll(',', '')); // 현재 자판기 잔액을 정수로 변환
 
       // 입금액이 있고, 소지금보다 적거나 같을 경우
-      if(inputMoney && inputMoney > 0) {
-        if(inputMoney <= myMoneyVal) {
-          this.myMoney.textContent = new Intl.NumberFormat().format(myMoneyVal - inputMoney) + ' 원'; 
-          this.balance.textContent = new Intl.NumberFormat().format((balanceVal ? balanceVal : 0) + inputMoney) + ' 원';
-        } else {
-          alert('소지금이 부족합니다.');
-        }
-        this.inputMoneyEl.value = null; // 입력값 초기화
+      if(inputMoney && inputMoney > 0 && inputMoney <= myMoneyVal) {
+        this.myMoney.textContent = new Intl.NumberFormat().format(myMoneyVal - inputMoney) + ' 원'; 
+        this.balance.textContent = new Intl.NumberFormat().format((balanceVal ? balanceVal : 0) + inputMoney) + ' 원';
+      } else {
+        alert('소지금이 부족합니다.');
       }
-    });
+      this.inputMoneyEl.value = null; // 입력값 초기화
+      });
 
     /**
      * 2. 거스름돈 반환
@@ -95,7 +96,7 @@ class BookStoreFunc {
     // 페이지네이션에 대해서도 동작하도록 이벤트 위임 사용
     this.bookList.addEventListener('click', (e) => {
       const bookBtn = e.target.closest('.btn-book');
-      if(!bookBtn) return;
+      if(!bookBtn) return; // 책 버튼이 아니면 함수 종료
 
       // 현재 잔액
       const balanceVal = parseInt(this.balance.textContent.replaceAll(',', ''));
@@ -106,7 +107,7 @@ class BookStoreFunc {
 
       // 잔액이 선택한 책 가격보다 많거나 같은 경우
       if(balanceVal >= targetElPrice) {
-        this.balance.textContent = new Intl.NumberFormat().format(balanceVal - targetElPrice) + '원';
+        this.balance.textContent = new Intl.NumberFormat().format(balanceVal - targetElPrice) + ' 원';
 
         for(const item of stagedListItem) {
           // 선택한 책이 이미 장바구니에 있는 경우
@@ -185,20 +186,21 @@ class BookStoreFunc {
       let totalPrice = 0;
 
       for(const itemStaged of itemStagedList) {
-        let isStaged = false; // 초기화
+        let isStaged = false; // 아이템이 구매 목록에 이미 있는지 확인하기 위함
 
         for(const itemGet of itemGetList) {
-          // 장바구니의 책이 이미 구매리스트에 있다면
+          // 장바구니의 책이 이미 구매 목록에 있다면
           if(itemStaged.dataset.item === itemGet.dataset.item) {
-            const itemTxt = itemGet.querySelector('strong');
-            // 구매 리스트의 책 카운트를 선택한 수만큼 증가
+            const itemTxt = itemGet.querySelector('strong'); // 구매 목록의 책 수량
+            // 구매 목록의 책 카운트를 선택한 수만큼 증가
             itemTxt.firstChild.textContent = parseInt(itemTxt.firstChild.textContent) + parseInt(itemStaged.querySelector('strong').firstChild.textContent);
 
-            isStaged = true;
-            break;
+            isStaged = true; // 아이템이 이미 구매 목록에 있을 경우
+            break; // 반복문 종료
           }
         }
 
+        // 아이템이 구매 목록에 없는 경우
         if(!isStaged) {
           this.getList.append(itemStaged);
         }
