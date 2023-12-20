@@ -1,6 +1,6 @@
 # 🔍VendingMachine_Book Bites
 
-📖 배포 페이지: 
+📖 배포 페이지: https://sejungseo.github.io/VendingMachine/
 
 ## 개요
 - 이 프로젝트는 책을 자판기로 구매할 수 있는 미니 프로젝트입니다.
