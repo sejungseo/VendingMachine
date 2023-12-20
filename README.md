@@ -2,6 +2,8 @@
 
 📖 배포 페이지: https://sejungseo.github.io/VendingMachine/
 
+<img width="50%" alt="Group 11" src="https://github.com/sejungseo/VendingMachine/assets/125885922/a8a95aa9-cd34-42af-b014-f7febce76866">
+
 ## 개요
 - 이 프로젝트는 책을 자판기로 구매할 수 있는 미니 프로젝트입니다.
 - 사용자는 책을 탐색하고, 선택하여 구매할 수 있습니다.
@@ -27,10 +29,6 @@
 - **구매 프로세스**: 구매하기 버튼을 클릭 시, 장바구니에서 구매한 책 목록으로 이동합니다.
 
 ## 스크린샷
-|PC|모바일|
-|:---:|:---:|
-|<img width="100%" alt="Group 11" src="https://github.com/sejungseo/VendingMachine/assets/125885922/a8a95aa9-cd34-42af-b014-f7febce76866">|<img width="70%" alt="모바일" src="https://github.com/sejungseo/VendingMachine/assets/125885922/c24ea738-5233-452f-a347-c57f7465629d">|
-
 
 |페이지 이동 기능|선택 및 취소 기능|
 |:---:|:---:|
@@ -39,6 +37,10 @@
 |계산 기능|구매 기능|
 |:---:|:---:|
 |![계산기능](https://github.com/sejungseo/VendingMachine/assets/125885922/82a0ad9f-8b83-4941-b5af-e77eea3f1b97)|![구매기능](https://github.com/sejungseo/VendingMachine/assets/125885922/077ac14f-4321-45e6-b0a4-ee1fd51ef485)|
+
+|반응형|
+|:---:|
+|<img width="50%" src="https://github.com/sejungseo/VendingMachine/assets/125885922/95f0fed7-f237-4898-89a1-a81e0b8bc6ed"/>|
 
 ## 트러블 슈팅
 #### 페이지 이동 버튼 클릭 후 책 선택 시 장바구니에 추가되지 않는 이슈 발생
